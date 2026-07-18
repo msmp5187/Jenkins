@@ -21,3 +21,47 @@ pipeline {
         }
     }
 }
+
+
+
+// pipeline {
+//     agent any
+//     tools{
+//         maven 'Maven-3'
+//         jdk 'jdk17'
+//     }
+//     environment{
+//         POM_FILE = 'Boardgame-main/pom.xml'
+//     }
+//     parameters{
+//         string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Select Git branch to build')
+//     }
+//     stages {
+//         stage('git checkout') {
+//             steps {
+//                 dir('Boardgame-main'){
+//                 git branch: "${params.BRANCH_NAME}", url: 'https://github.com/msmp5187/Boardgame.git'
+//                 }
+//             }
+//         }
+//           stage('Maven compile') {
+//             steps {
+//                 dir('Boardgame-main'){
+//                 sh 'mvn -f ${POM_FILE} clean package'
+//                 }
+//             }
+//         }        
+//     }
+//     post{
+//         success {
+//              echo "✅ Build Successful"
+//         }
+//         failure {
+//             echo "❌ Build Failed"
+//         }
+//         always{
+//             echo "Job completed at ${new Date()} "
+//         }
+//         }
+    
+// }
